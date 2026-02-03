@@ -1,5 +1,5 @@
 import { promises as fs } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 
 /**
  * Check if a path exists
@@ -100,7 +100,9 @@ export async function listDirectories(dirPath: string): Promise<string[]> {
 /**
  * Get file stats
  */
-export async function getFileStats(filePath: string): Promise<{ size: number; mtime: Date } | null> {
+export async function getFileStats(
+  filePath: string
+): Promise<{ size: number; mtime: Date } | null> {
   try {
     const stats = await fs.stat(filePath);
     return { size: stats.size, mtime: stats.mtime };

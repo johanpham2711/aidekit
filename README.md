@@ -121,6 +121,52 @@ Domain expertise that enhances AI capabilities:
 
 All templates can be customized after installation. Edit the files in your `.cursor/` (or equivalent) directory.
 
+## Development
+
+### CI/CD
+
+This project uses GitHub Actions for CI/CD:
+
+- **CI Workflow** (`ci.yml`): Runs on every PR to validate build, lint, and dry-run publish
+- **Release Workflow** (`release.yml`): Automatically publishes to npm when merging to `main`
+
+### Required GitHub Secrets
+
+To enable automatic npm publishing, add the following secret to your GitHub repository:
+
+| Secret | Description | How to Get It |
+|--------|-------------|---------------|
+| `NPM_TOKEN` | npm automation token for publishing | [npm Access Tokens](https://www.npmjs.com/settings/your-username/tokens) → Generate New Token → Automation |
+
+**Setup Steps:**
+
+1. **Generate npm Token:**
+   - Go to [npmjs.com](https://www.npmjs.com/) → Click your avatar → Access Tokens
+   - Click "Generate New Token" → Select "Automation"
+   - Copy the generated token
+
+2. **Add to GitHub:**
+   - Go to your GitHub repository → Settings → Secrets and variables → Actions
+   - Click "New repository secret"
+   - Name: `NPM_TOKEN`
+   - Value: Paste your npm token
+   - Click "Add secret"
+
+### Commit Convention
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) with [semantic-release](https://semantic-release.gitbook.io/):
+
+| Commit Type | Version Bump | Example |
+|-------------|--------------|---------|
+| `fix:` | Patch (1.0.x) | `fix: handle empty directory` |
+| `feat:` | Minor (1.x.0) | `feat: add claude support` |
+| `feat!:` or `BREAKING CHANGE:` | Major (x.0.0) | `feat!: change init API` |
+| `chore:`, `docs:`, `style:`, `test:` | No release | `docs: update readme` |
+
+### npm Provenance
+
+The package is published with [npm provenance](https://docs.npmjs.com/generating-provenance-statements) enabled, providing supply chain security and linking published packages to their source code.
+
 ## Roadmap
 
 - [ ] Claude Code support

@@ -1,8 +1,8 @@
-import chalk from 'chalk';
 import { join } from 'node:path';
-import type { ListOptions, AIType, ComponentType } from '../types/index.js';
+import chalk from 'chalk';
+import type { AIType, ComponentType, ListOptions } from '../types/index.js';
 import { COMPONENT_TYPES } from '../types/index.js';
-import { detectAIType, getAITypeDescription, getAIDirectory } from '../utils/detect.js';
+import { detectAIType, getAIDirectory, getAITypeDescription } from '../utils/detect.js';
 import { listFiles, pathExists } from '../utils/filesystem.js';
 import { logger } from '../utils/logger.js';
 
@@ -39,10 +39,7 @@ export async function listCommand(options: ListOptions): Promise<void> {
   logger.blank();
 }
 
-async function listComponentType(
-  rootDir: string,
-  type: ComponentType
-): Promise<void> {
+async function listComponentType(rootDir: string, type: ComponentType): Promise<void> {
   const dirName = `${type}s`;
   const dir = join(rootDir, dirName);
 

@@ -4,8 +4,8 @@ import prompts from 'prompts';
 import type { AIType, InitOptions } from '../types/index.js';
 import { AI_TYPES } from '../types/index.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
-import { generatePlatformFiles } from '../utils/template.js';
 import { logger } from '../utils/logger.js';
+import { generatePlatformFiles } from '../utils/template.js';
 
 /**
  * Initialize aidekit in the current project

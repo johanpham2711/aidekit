@@ -44,7 +44,7 @@ export const logger = {
   /**
    * Display a list item
    */
-  item(message: string, indent: number = 0): void {
+  item(message: string, indent = 0): void {
     const spaces = '  '.repeat(indent);
     console.log(`${spaces}${chalk.dim('•')} ${message}`);
   },
