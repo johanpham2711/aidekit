@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { initCommand } from './commands/init.js';
+import { fileURLToPath } from 'node:url';
+import { Command } from 'commander';
 import { addCommand } from './commands/add.js';
+import { initCommand } from './commands/init.js';
 import { listCommand } from './commands/list.js';
 import { updateCommand } from './commands/update.js';
 import type { AIType, ComponentType } from './types/index.js';

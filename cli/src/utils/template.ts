@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises';
-import { join, dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { AIType, PlatformConfig, ComponentType } from '../types/index.js';
-import { ensureDirectoryExists, writeFileSafe, pathExists } from './filesystem.js';
+import type { AIType, ComponentType, PlatformConfig } from '../types/index.js';
+import { ensureDirectoryExists, pathExists, writeFileSafe } from './filesystem.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // After build: dist/utils/template.js -> ../../assets
@@ -20,10 +20,7 @@ export async function loadPlatformConfig(aiType: AIType): Promise<PlatformConfig
 /**
  * Load a template file
  */
-export async function loadTemplate(
-  type: ComponentType,
-  name: string
-): Promise<string> {
+export async function loadTemplate(type: ComponentType, name: string): Promise<string> {
   const templatePath = join(ASSETS_DIR, 'templates', `${type}s`, `${name}.md`);
   return readFile(templatePath, 'utf-8');
 }
@@ -172,10 +169,7 @@ Use this agent when:
 /**
  * Render template with variable substitution
  */
-export function renderTemplate(
-  content: string,
-  variables: Record<string, string>
-): string {
+export function renderTemplate(content: string, variables: Record<string, string>): string {
   let result = content;
   for (const [key, value] of Object.entries(variables)) {
     result = result.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value);
@@ -295,14 +289,15 @@ export async function createComponent(
   options: { force?: boolean } = {}
 ): Promise<{ created: boolean; path: string }> {
   const config = await loadPlatformConfig(aiType);
-  
+
   // Get the correct subdirectory for this component type
-  const subDir = config.folderStructure[`${type}s` as keyof typeof config.folderStructure] || `${type}s`;
+  const subDir =
+    config.folderStructure[`${type}s` as keyof typeof config.folderStructure] || `${type}s`;
   const componentDir = join(targetDir, config.folderStructure.root, subDir);
   const componentPath = join(componentDir, `${name}.md`);
 
   // Check if already exists
-  if (await pathExists(componentPath) && !options.force) {
+  if ((await pathExists(componentPath)) && !options.force) {
     return { created: false, path: componentPath };
   }
 

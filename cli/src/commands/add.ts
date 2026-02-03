@@ -1,9 +1,9 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import type { AddOptions, AIType } from '../types/index.js';
+import type { AIType, AddOptions } from '../types/index.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
-import { createComponent } from '../utils/template.js';
 import { logger } from '../utils/logger.js';
+import { createComponent } from '../utils/template.js';
 
 /**
  * Add a new component to the project
@@ -32,7 +32,7 @@ export async function addCommand(options: AddOptions): Promise<void> {
 
     if (!result.created) {
       spinner.fail(`${type} "${name}" already exists`);
-      logger.dim(`Use --force to overwrite`);
+      logger.dim('Use --force to overwrite');
       return;
     }
 
