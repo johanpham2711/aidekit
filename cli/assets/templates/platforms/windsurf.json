@@ -1,0 +1,19 @@
+{
+  "platform": "windsurf",
+  "displayName": "Windsurf",
+  "installType": "full",
+  "folderStructure": {
+    "root": ".windsurf",
+    "commands": "commands",
+    "rules": "rules",
+    "skills": "skills",
+    "agents": "agents"
+  },
+  "features": {
+    "commands": true,
+    "rules": true,
+    "skills": true,
+    "subagents": false
+  },
+  "rulesFile": ".windsurfrules"
+}

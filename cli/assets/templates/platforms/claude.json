@@ -1,0 +1,19 @@
+{
+  "platform": "claude",
+  "displayName": "Claude Code",
+  "installType": "full",
+  "folderStructure": {
+    "root": ".claude",
+    "commands": "commands",
+    "rules": "rules",
+    "skills": "skills",
+    "agents": "agents"
+  },
+  "features": {
+    "commands": true,
+    "rules": true,
+    "skills": true,
+    "subagents": true
+  },
+  "rulesFile": "CLAUDE.md"
+}

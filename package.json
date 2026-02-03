@@ -1,0 +1,35 @@
+{
+  "name": "aidekit",
+  "version": "1.0.0",
+  "description": "Universal AI coding toolkit for modern IDEs",
+  "private": true,
+  "workspaces": [
+    "cli"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=cli",
+    "dev": "npm run dev --workspace=cli",
+    "test": "npm run test --workspace=cli",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "coding",
+    "assistant",
+    "cursor",
+    "claude",
+    "windsurf",
+    "commands",
+    "rules",
+    "skills"
+  ],
+  "author": "Johan Pham",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/aidekit.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "platform": "cursor",
+  "displayName": "Cursor IDE",
+  "installType": "full",
+  "folderStructure": {
+    "root": ".cursor",
+    "commands": "commands",
+    "rules": "rules",
+    "skills": "skills",
+    "agents": "agents"
+  },
+  "features": {
+    "commands": true,
+    "rules": true,
+    "skills": true,
+    "subagents": false
+  },
+  "rulesFile": ".cursorrules"
+}
